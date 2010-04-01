@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+    <title>dangerweb: {% block title %} base page {% endblock %} </title>
+
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="author" content="Dangerous Dave" />
+<meta name="description" content="dangerweb" />
+<meta name="keywords" content="simpsons quotes" />
+<meta name="robots" content="index, follow" />
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:8080/Underground.css" />
+{% endblock %}
+</head>
+
+<body>
+<!-- wrap starts here -->
+<div id="wrap">
+
+		<!-- header -->
+		<div id="header">			
+					
+            <span id="slogan"> {% block slogan %} danger is my <i>first</i> name {% endblock %}</span>
+			
+			<!-- tabs -->
+            <ul>
+                {% block headmenu %}
+				<li id="current"><a href="index.html"><span>Home</span></a></li>
+				<li><a href="index.html"><span>SimpsonQuote</span></a></li>
+				<li><a href="index.html"><span>About</span></a></li>			
+                {% endblock %}
+			</ul>
+											
+		</div>
+		
+		<div id="header-logo">			
+			
+			<div id="logo">danger<span class="red">web</span></div>		
+			
+			<form method="post" class="search" action="#">
+				<p><input name="search_query" class="textbox" type="text" />
+  				<input name="search" class="searchbutton" value="Search" type="submit" /></p>
+			</form>
+						
+		</div>
+		
+       	<div id="main">
+            {% block content %}
+			<a name="TemplateInfo"></a>
+			<h1>Article 1</h1>
+            Apparently this is really cool
+						
+			{% endblock %}				
+		</div>
+
+        <div id="sidebar" >
+
+			<h1>more danger</h1>
+			<div class="left-box">
+                <ul class="sidemenu">
+                    {% block sidemenu %}
+                    <li><a href="index.html">Home</a></li>
+                    {% endblock %}
+				</ul>
+			</div>
+
+			<h1>Powered By</h1>
+			<div class="left-box">
+                <ul class="sidemenu">
+                    <li><a href="http://www.ubuntu.com" title="Ubuntu">Ubuntu</a></li>
+                    <li><a href="http://www.djangoproject.com" title="django">django</a></li>
+                    <li><a href="http://www.styleshout.com" title="Styleshout">Styleshout</a></li>
+                </ul>
+			</div>
+
+
+		</div>
+		
+<!-- wrap ends here -->
+</div>
+		
+<!-- footer starts here -->
+<div class="footer">
+	
+		<p>	
+		    &copy; 2010 Dangerous Dave
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+	    	<a href="http://www.stylishtemplate.com/" title="Website Templates">website templates</a> by <a href="http://www.styleshout.com/">styleshout</a>
+
+		    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		    <a href="index.html">Home</a> |
+   	        <a href="index.html">Site Map</a> |
+		    <a href="index.html">RSS Feed</a> |
+            <a href="http://validator.w3.org/check/referer">XHTML</a> |
+   	        <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>
+		</p>
+		
+</div>	
+	
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base" %}
+{% block title %}
+    Simpsons quotes matching the keywords: 
+    {% for item in keywords %}
+    {{ item }} 
+    {% endfor %}
+
+    {% endblock %}
+{% block slogan %}see, they did it...{% endblock %}
+
+{% block content %}
+        {% for item in quotelist %}
+        <li> <p>
+        {% for line in item.text %} 
+        {{ line.0 }}: {{ line.1 }} <br />
+         {% endfor %}</p>
+         <p>{{ item.epno }}: {{item.title}} Score {{ item.score }}<br />
+         Characters:{% for c in item.chars %} {{ c }}, {% endfor %}
+         <br />
+         Keywords:{% for c in item.keywords %} {{ c }}, {% endfor %}
+         </P>
+        </li>
+        {% endfor %}
+{% endblock %}
