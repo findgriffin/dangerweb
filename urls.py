@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     # (r'^admin/', include(admin.site.urls)),
     # this line MUST be taken out prior to production
     (r'^$', home),
-    (r'^results/$',results),
+    (r'^search/$',results),
 
 )

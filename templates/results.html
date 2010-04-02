@@ -1,7 +1,7 @@
-{% extends "base" %}
+{% extends "base.html" %}
 {% block title %}
     Simpsons quotes matching the keywords: 
-    {% for item in keywords %}
+    {% for item in title %}
     {{ item }} 
     {% endfor %}
 
@@ -9,16 +9,11 @@
 {% block slogan %}see, they did it...{% endblock %}
 
 {% block content %}
-        {% for item in quotelist %}
-        <li> <p>
-        {% for line in item.text %} 
-        {{ line.0 }}: {{ line.1 }} <br />
-         {% endfor %}</p>
-         <p>{{ item.epno }}: {{item.title}} Score {{ item.score }}<br />
-         Characters:{% for c in item.chars %} {{ c }}, {% endfor %}
-         <br />
-         Keywords:{% for c in item.keywords %} {{ c }}, {% endfor %}
-         </P>
-        </li>
-        {% endfor %}
+You can vote for your favorite quote.
+    {% for quote in content %}
+    <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> <small>score: {{quote.score}}</small> &nbsp</div></h1>
+    <form class="form" action="/vote/" method="post"><input class="upboat" type="submit" value="like"><input class="upboat" type="submit" value="unlike"></form>
+        {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
+        
+    {% endfor %}
 {% endblock %}

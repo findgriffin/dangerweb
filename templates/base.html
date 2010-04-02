@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>dangerweb: {% block title %} base page {% endblock %} </title>
+    <title> {% block title %}:: dangerweb ::{% endblock %} </title>
 
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
 <meta name="author" content="Dangerous Dave" />
@@ -40,9 +40,9 @@
 			
 			<div id="logo">danger<span class="red">web</span></div>		
 			
-			<form method="post" class="search" action="#">
-				<p><input name="search_query" class="textbox" type="text" />
-  				<input name="search" class="searchbutton" value="Search" type="submit" /></p>
+			<form method="get" class="search" action="/search/">
+                    <input type="text" name="q">
+                    <input type="submit" value="Search">
 			</form>
 						
 		</div>
