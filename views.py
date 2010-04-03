@@ -10,7 +10,8 @@ def results(request):
         qlist = dbase[0]
         ind = dbase[1]
         list = libquote.sort_results(libquote.or_search(keys,ind),keys)
-        
+        if len(list) == 0:
+            return render_to_response('no_result.html')
         t = get_template('results.html')
         html = t.render(Context({'title': keys, 'content': list}))
         return HttpResponse(html)
