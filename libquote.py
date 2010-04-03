@@ -5,6 +5,7 @@ import xml.etree.ElementTree as etree
 import sys
 from collections import defaultdict
 import pickle
+from operator import attrgetter
 
 def save_quoter(qlist, index, qfilename, ifilename):
     """ Save a quotelist and index using pickle
@@ -55,7 +56,7 @@ def sort_results(qlist, keywords):
         for key in keywords:
             if key in quote.keywords:
                 quote.score = quote.score + quote.keywords[key]
-    qlist.sort()
+    qlist.sort(key=attrgetter('score'), reverse=True)
     return qlist
 
 def makeindex(qlist):
@@ -121,6 +122,9 @@ class Quote():
     def dec_keyword(key):
         self.keywords[key] = self.keywords[key] - 1
 
+    def getScore(self):
+        return self.score
+
     def __str__(self):
         outtext = self.epno+': '+self.title+'  Score: '+str(self.score)+'\n'
         for elem in self.text:
@@ -133,9 +137,10 @@ class Quote():
             outtext = outtext+elem+', '
         return outtext
 
-    def __cmp__(self, other):
+    def compare(self, other):
         """ other and self are reversed when calling cmp(self, other) so sort_results returns
         a list in descending order
+        renamed from __cmp__ as it broke the or_search method
         """
         return cmp(other.score, self.score)
         
