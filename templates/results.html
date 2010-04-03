@@ -12,8 +12,8 @@
 You can vote for your favorite quote.
     {% for quote in content %}
     <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> <small>score: {{quote.score}}</small> &nbsp</div></h1>
-    <form class="form" action="/vote/" method="post"><input class="upboat" type="submit" value="like"><input class="upboat" type="submit" value="unlike"></form>
-        {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
+<!--    <form class="form float-right" action="/vote/" method="post"><input class="upboat" type="submit" value="like"><input class="upboat" type="submit" value="unlike"></form>
+--!>    {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
         
     {% endfor %}
 {% endblock %}

@@ -6,14 +6,17 @@ import libquote
 def results(request):
     if 'q' in request.GET:
         keys = request.GET['q'].split()
-        qlist = libquote.quoteloader('quotelist.xml')
-        list = libquote.sort_results(libquote.and_search(keys,qlist),keys)
+        dbase = libquote.load_quoter('qlist.p','ind.p')
+        qlist = dbase[0]
+        ind = dbase[1]
+        list = libquote.sort_results(libquote.or_search(keys,ind),keys)
         
         t = get_template('results.html')
         html = t.render(Context({'title': keys, 'content': list}))
         return HttpResponse(html)
     else:
         return render_to_response('simpson.html')
+
 def home(request):
     return render_to_response('simpson.html')
 
