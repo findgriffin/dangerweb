@@ -100,6 +100,7 @@ class Quote():
     epno = ''
     text = []
     score = 0 # temporary variable used when sorting results
+    popularity = 0 # increased when people vote for this quote    
     def __init__(self, epno, title, text):
         temp = text.strip()
         self.text = [elem.split(':') for elem in temp.split('\n')] # turn self.text into a list of lists
@@ -122,9 +123,6 @@ class Quote():
     def dec_keyword(key):
         self.keywords[key] = self.keywords[key] - 1
 
-    def getScore(self):
-        return self.score
-
     def __str__(self):
         outtext = self.epno+': '+self.title+'  Score: '+str(self.score)+'\n'
         for elem in self.text:
@@ -137,10 +135,3 @@ class Quote():
             outtext = outtext+elem+', '
         return outtext
 
-    def compare(self, other):
-        """ other and self are reversed when calling cmp(self, other) so sort_results returns
-        a list in descending order
-        renamed from __cmp__ as it broke the or_search method
-        """
-        return cmp(other.score, self.score)
-        

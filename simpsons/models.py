@@ -28,3 +28,6 @@ class Quote(models.Model):
 
     def __unicode__(self):
         return unicode(self.season)+u"."+unicode(self.epno)+self.text
+class User(models.Model):
+    ip_addr = models.IPAddressField()
+

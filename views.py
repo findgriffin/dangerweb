@@ -13,7 +13,7 @@ def results(request):
         if len(list) == 0:
             return render_to_response('no_result.html')
         t = get_template('results.html')
-        html = t.render(Context({'title': keys, 'content': list}))
+        html = t.render(Context({'title': keys, 'content': list,'no_of_results': len(list)}))
         return HttpResponse(html)
     else:
         return render_to_response('simpson.html')

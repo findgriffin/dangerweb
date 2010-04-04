@@ -8,8 +8,9 @@
     {% endblock %}
 {% block slogan %}see, they did it...{% endblock %}
 
+
 {% block content %}
-You can vote for your favorite quote.
+Found {{no_of_results}} results. &nbsp &nbsp You can vote for your favorite quote.   
     {% for quote in content %}
     <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> <small>score: {{quote.score}}</small> &nbsp</div></h1>
 <!--    <form class="form float-right" action="/vote/" method="post"><input class="upboat" type="submit" value="like"><input class="upboat" type="submit" value="unlike"></form>
