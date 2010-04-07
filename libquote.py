@@ -116,12 +116,11 @@ class Quote():
                     self.keywords[word.strip(""" ,./\<>?;:'"[]{}|-()!$""").lower()] = 1
                 else:
                     self.keywords[word] = self.keywords[word] + 1
-
-    def inc_keyword(key):
-        self.keywords[key] = self.keywords[key] + 1
-    
-    def dec_keyword(key):
-        self.keywords[key] = self.keywords[key] - 1
+    def html_text(self):
+        txt = u''
+        for elem in self.text:
+            txt = txt+unicode(elem[0]) + u':'+ unicode(elem[1]) + u'<br>'
+        return txt
 
     def __str__(self):
         outtext = self.epno+': '+self.title+'  Score: '+str(self.score)+'\n'

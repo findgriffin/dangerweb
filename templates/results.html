@@ -1,4 +1,18 @@
 {% extends "base.html" %}
+
+{% block extrahead %}
+<script type="text/javascript" src="http://localhost:8080/jquery.js"></script>
+<script type="text/javascript">
+ $(document).ready(function(){
+   $("input").click(function(event){
+       $(this).hide();
+
+     alert("Thanks for voting!");
+   });
+ });
+
+</script>
+{% endblock %}
 {% block title %}
     Simpsons quotes matching the keywords: 
     {% for item in title %}
@@ -10,11 +24,14 @@
 
 
 {% block content %}
-Found {{no_of_results}} results. &nbsp &nbsp You can vote for your favorite quote.   
+Found {{no_of_results}} results in {{ time_to_find }} seconds. &nbsp &nbsp You can vote for your favorite quote.   
     {% for quote in content %}
-    <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> <small>score: {{quote.score}}</small> &nbsp</div></h1>
-<!--    <form class="form float-right" action="/vote/" method="post"><input class="upboat" type="submit" value="like"><input class="upboat" type="submit" value="unlike"></form>
---!>    {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
+    <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> 
+                <input class="upboat" type="submit" value="upboat">
+                <input class="upboat" type="submit" value="sinkboat">
+            <small>score: {{quote.score}}</small> &nbsp</div></h1>
+        {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
         
     {% endfor %}
+<a href="http://jquery.com/">jQuery</a>
 {% endblock %}

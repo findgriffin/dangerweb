@@ -10,11 +10,10 @@ class Keyword(models.Model):
         
 
 class Character(models.Model):
-    firstname = models.CharField(max_length=20)
-    lastname = models.CharField(max_length=20)
+    name = models.CharField(max_length=40)
 
     def __unicode__(self):
-        return self.firstname+self.lastname
+        return self.name
 
 class Quote(models.Model):
     source = models.CharField(max_length=30)
@@ -31,8 +30,8 @@ class Quote(models.Model):
 
 class User(models.Model):
     ip_addr = models.IPAddressField()
-    rint_1 = models.IntegerField()
-    rint_2 = models.IntegerField()
+    unique_1 = models.IntegerField()
+    unique_2 = models.IntegerField()
     last_vote = models.DateTimeField()
     
 class Vote(models.Model):
