@@ -111,11 +111,12 @@ class Quote():
         self.title = title
         self.keywords = dict()
         for line in temp.split('\n'):
-            for word in line.split():
-                if word not in self.keywords:
-                    self.keywords[word.strip(""" ,./\<>?;:'"[]{}|-()!$""").lower()] = 1
-                else:
-                    self.keywords[word] = self.keywords[word] + 1
+            if len(line) > 0:
+                for word in line.split():
+                    if word not in self.keywords:
+                        self.keywords[word.strip(""" ,./\<>?;:'"[]{}|-()!$""").lower()] = 1
+                    else:
+                        self.keywords[word] = self.keywords[word] + 1
     def html_text(self):
         txt = u''
         for elem in self.text:
