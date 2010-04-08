@@ -17,5 +17,5 @@ urlpatterns = patterns('',
     # this line MUST be taken out prior to production
     (r'^$', home),
     (r'^search/$',results),
-
+    (r'^vote/$',vote),
 )

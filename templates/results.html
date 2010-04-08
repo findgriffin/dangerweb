@@ -2,12 +2,22 @@
 
 {% block extrahead %}
 <script type="text/javascript" src="http://localhost:8080/jquery.js"></script>
+<script type="text/javascript" src="http://localhost:8080/jquery.form.js"></script>
 <script type="text/javascript">
  $(document).ready(function(){
-   $("input").click(function(event){
-       $(this).hide();
-
-     alert("Thanks for voting!");
+   $("#voteForm").ajaxForm(function(){
+      var name = $("upboat#name").val(); 
+      var dataString = "voted!";
+        alert ("hello");
+       $.ajax({ 
+       type: "POST",
+       url: "/vote/",
+       data: name,
+       success: function(){
+       
+       }
+       });
+       return false;
    });
  });
 
@@ -24,14 +34,15 @@
 
 
 {% block content %}
-Found {{no_of_results}} results in {{ time_to_find }} seconds. &nbsp &nbsp You can vote for your favorite quote.   
+Found {{no_of_results}} results in {{ time_to_find }} seconds. &nbsp &nbsp 
+You can vote for your favorite quote.  
     {% for quote in content %}
-    <h1>{{ quote.epno}}: {{ quote.title }} <div class="float-right"> 
-                <input class="upboat" type="submit" value="upboat">
-                <input class="upboat" type="submit" value="sinkboat">
-            <small>score: {{quote.score}}</small> &nbsp</div></h1>
-        {% for line in quote.text %}<p>{{ line.0  }}: {{line.1}} </p>{% endfor %}
-        
+    <h1>{{ quote.season }}.{{ quote.epno }}: {{ quote.title }} <div class="float-right"> 
+            <small>score: {{ quote.popularity}}</small> &nbsp</div></h1>
+            <form id="votForm" class="vote float-right" action="" method="post">
+            <input id="upquote" name="upquote" class="upboat" type="submit" value="upquote">
+            <input id="downquote" name="downquote" class="upboat" type="submit" value="downquote">
+    </form>
+    {{ quote.text|safe }}
     {% endfor %}
-<a href="http://jquery.com/">jQuery</a>
 {% endblock %}

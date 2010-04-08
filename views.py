@@ -12,15 +12,18 @@ def results(request):
     if 'q' in request.GET:
         start_time = time.time()
         keys = request.GET['q'].split()
-        quoteset = []
+        quoteset = set()
+        scores = dict()
         for k in keys:
-            models.Keyword.
-        
-        if len(list) == 0:
+            returned_keywords = models.Keyword.objects.filter(word=k).all()
+            if len(returned_keywords) > 0:
+                for qt in returned_keywords[0].quote_set.all():
+                    quoteset.add(qt)
+        if len(quoteset) == 0:
             return render_to_response('no_result.html')
         t = get_template('results.html')
         search_time = time.time() - start_time
-        html = t.render(Context({'title': keys, 'content': list,'no_of_results': len(list),\
+        html = t.render(Context({'title': keys, 'content': quoteset,'scores': scores, 'no_of_results': len(quoteset),\
                 'time_to_find': "%.2f" % search_time}))
         response = HttpResponse(html)
         return response
@@ -31,8 +34,11 @@ def home(request):
     return render_to_response('simpson.html')
 
 def vote(request):
-    if request.session['has_voted']:
-        return Null
-    else:
-        request.session['has_voted'] = True;
+    print request
+    for key in request.POST:
+        print key+": "+request.POST[key]
+    return render_to_response('simpson.html')
 
+def sort_qlist(qlist, keys):
+
+    return None

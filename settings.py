@@ -1,6 +1,6 @@
 # Django settings for dangerweb project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -75,7 +75,7 @@ TEMPLATE_DIRS = (
 INSTALLED_APPS = (
 #    'django.contrib.auth',
 #    'django.contrib.contenttypes',
-#    'django.contrib.sessions',
+     'django.contrib.sessions',
 #    'django.contrib.sites',
     'simpsons',
 )
