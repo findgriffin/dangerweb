@@ -18,7 +18,7 @@ class Character(models.Model):
 class Quote(models.Model):
     source = models.CharField(max_length=30)
     epno = models.SmallIntegerField()
-    title = models.CharField(max_length=40)
+    title = models.CharField(max_length=60)
     season = models.SmallIntegerField()
     characters = models.ManyToManyField(Character)
     keywords = models.ManyToManyField(Keyword)
